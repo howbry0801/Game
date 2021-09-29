@@ -7,10 +7,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, Fighter_Jet, 0, -100)
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    let mySprite: Sprite = null
-    mySprite.destroy(effects.bubbles, 500)
+    Fighter_Jet.destroy(effects.bubbles, 500)
     info.changeLifeBy(-1)
     music.zapped.play()
+    game.reset()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy(effects.bubbles, 500)
@@ -40,7 +40,7 @@ Fighter_Jet = sprites.create(img`
     `, SpriteKind.Player)
 Fighter_Jet.setPosition(84, 98)
 controller.moveSprite(Fighter_Jet)
-info.setLife(3)
+info.setLife(1)
 game.onUpdateInterval(500, function () {
     Ghost = sprites.create(img`
         ........................
